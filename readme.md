@@ -4,11 +4,11 @@
 
 ![Metamorphosis](./docs/logo.png)
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/leroy-merlin-br/metamorphosis.svg?style=flat-square)](https://packagist.org/packages/leroy-merlin-br/metamorphosis)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/brnbp/metamorphosis.svg?style=flat-square)](https://packagist.org/packages/brnbp/metamorphosis)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Total Downloads](https://img.shields.io/packagist/dt/leroy-merlin-br/metamorphosis.svg?style=flat-square)](https://packagist.org/packages/leroy-merlin-br/metamorphosis)
-[![Build Status](https://travis-ci.org/leroy-merlin-br/metamorphosis.svg?branch=master)](https://travis-ci.org/leroy-merlin-br/metamorphosis)
-[![Coverage Status](https://coveralls.io/repos/github/leroy-merlin-br/metamorphosis/badge.svg?branch=master)](https://coveralls.io/github/leroy-merlin-br/metamorphosis?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/brnbp/metamorphosis.svg?style=flat-square)](https://packagist.org/packages/brnbp/metamorphosis)
+[![Build Status](https://travis-ci.org/brnbp/metamorphosis.svg?branch=master)](https://travis-ci.org/brnbp/metamorphosis)
+[![Coverage Status](https://coveralls.io/repos/github/brnbp/metamorphosis/badge.svg?branch=master)](https://coveralls.io/github/brnbp/metamorphosis?branch=master)
 
 - [Introduction](#introduction)
 - [Requirements](#requirements)
@@ -40,7 +40,7 @@ Metamorphosis provides a simple, straight-forward implementation for working wit
 You can install the library via Composer:
 
 ```
-$ composer require leroy-merlin-br/metamorphosis
+$ composer require brnbp/metamorphosis
 ```
 
 And publish the config file with:
@@ -55,8 +55,3 @@ For usage instructions, please refer to our [Quick Usage Guide](docs/quick-usage
 ## License
 
 Metamorphosis is free software distributed under the terms of the [MIT license](http://opensource.org/licenses/MIT)
-
-<a name="additional_information"></a>
-## Additional information
-
-Metamorphosis was proudly built by the [Leroy Merlin Brazil](https://github.com/leroy-merlin-br) team. [See all the contributors](https://github.com/leroy-merlin-br/metamorphosis/graphs/contributors).

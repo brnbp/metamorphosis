@@ -15,10 +15,10 @@ class BrokerTest extends LaravelTestCase
         $this->assertInstanceOf(NoAuthentication::class, $broker->getAuthentication());
     }
 
-    public function testItShouldAuthenticate()
+    public function testItShouldPrepareAuthentication()
     {
         $broker = new Broker('some-connection');
 
-        $this->assertNull($broker->authenticate(new Conf()));
+        $this->assertNull($broker->prepareAuthentication(new Conf()));
     }
 }

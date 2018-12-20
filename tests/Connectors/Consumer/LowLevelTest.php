@@ -17,9 +17,13 @@ class LowLevelTest extends LaravelTestCase
 
         $connector = new LowLevel($config);
 
-        $config->expects($this->once())
+        $config->expects($this->exactly(2))
             ->method('getBrokerConfig')
             ->will($this->returnValue($this->createMock(Broker::class)));
+
+        $config->expects($this->once())
+            ->method('isHighPerformanceEnabled')
+            ->will($this->returnValue(true));
 
         $config->expects($this->once())
             ->method('getConsumerGroupId')

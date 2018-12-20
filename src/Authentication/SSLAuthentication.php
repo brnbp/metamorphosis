@@ -28,7 +28,7 @@ class SSLAuthentication implements Authentication
         $this->key = $authConfig['key'] ?? null;
     }
 
-    public function authenticate(Conf $conf)
+    public function setAuthentication(Conf $conf)
     {
         $this->validate();
 

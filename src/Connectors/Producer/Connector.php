@@ -3,6 +3,7 @@ namespace Metamorphosis\Connectors\Producer;
 
 use Exception;
 use Metamorphosis\Config\Producer;
+use Metamorphosis\Connectors\AbstractConnector;
 use Metamorphosis\TopicHandler\Producer\HandleableResponseInterface;
 use Metamorphosis\TopicHandler\Producer\HandlerInterface;
 use RdKafka\Conf;
@@ -10,7 +11,7 @@ use RdKafka\Message;
 use RdKafka\Producer as KafkaProducer;
 use RdKafka\ProducerTopic;
 
-class Connector
+class Connector extends AbstractConnector
 {
     /**
      * @var Queue
@@ -34,15 +35,9 @@ class Connector
 
     public function getProducerTopic(Producer $config): ProducerTopic
     {
-        $broker = $config->getBrokerConfig();
-
-        $conf = resolve(Conf::class);
-
-        $conf->set('metadata.broker.list', $broker->getConnections());
+        $conf = $this->getDefaultConf($config);
 
         $this->setCallbackResponses($conf);
-
-        $broker->authenticate($conf);
 
         $producer = app(KafkaProducer::class, compact('conf'));
 

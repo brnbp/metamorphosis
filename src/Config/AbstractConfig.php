@@ -20,6 +20,11 @@ abstract class AbstractConfig
     protected $broker;
 
     /**
+     * @var bool
+     */
+    protected $enableHighPerformance;
+
+    /**
      * @var iterable
      */
     protected $middlewares = [];
@@ -29,6 +34,7 @@ abstract class AbstractConfig
         $topicConfig = $this->getTopicConfig($topic);
         $this->setGlobalMiddlewares();
         $this->setTopic($topicConfig);
+        $this->setHighPerformanceConfig($topic);
         $this->setBroker($broker ?: $topicConfig['broker']);
     }
 
@@ -45,6 +51,17 @@ abstract class AbstractConfig
     public function getMiddlewares(): iterable
     {
         return $this->middlewares;
+    }
+
+    public function isHighPerformanceEnabled(): bool
+    {
+        return $this->enableHighPerformance;
+    }
+
+    protected function setHighPerformanceConfig(string $topic): void
+    {
+        $highPerformance = (bool) config("kafka.topics.{$topic}.high-performance", true);
+        $this->enableHighPerformance = $highPerformance;
     }
 
     protected function getTopicConfig(string $topic): array
