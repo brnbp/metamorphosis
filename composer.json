@@ -1,5 +1,5 @@
 {
-    "name": "leroy-merlin-br/metamorphosis",
+    "name": "brnbp/metamorphosis",
     "type": "library",
     "keywords": [
         "kafka"
@@ -37,8 +37,8 @@
     },
     "authors": [
         {
-            "name": "Boitata Team",
-            "email": "boitata@leroymerlin.com.br"
+            "name": "Bruno Pereira",
+            "email": "me@brnbp.com"
         }
     ],
     "extra": {
