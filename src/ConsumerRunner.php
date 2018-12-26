@@ -27,6 +27,16 @@ class ConsumerRunner
      */
     protected $handler;
 
+    /**
+     * @var MemoryManager
+     */
+    private $memoryManager;
+
+    public function __construct(MemoryManager $memoryManager)
+    {
+        $this->memoryManager = $memoryManager;
+    }
+
     public function run(Consumer $config, ConsumerInterface $consumer): void
     {
         $this->handler = $config->getConsumerHandler();
@@ -44,6 +54,8 @@ class ConsumerRunner
             } catch (Exception $exception) {
                 $this->handler->failed($exception);
             }
+
+            $this->stopIfNecessary($config);
         }
     }
 
@@ -56,5 +68,24 @@ class ConsumerRunner
     {
         $middlewares[] = new ConsumerMiddleware($this->handler);
         $this->middlewareDispatcher = new Dispatcher($middlewares);
+    }
+
+    /**
+     * It checks to see if we have exceeded our memory limits. If so, we'll stop
+     * this worker and let whatever is "monitoring" it restart the process.
+     */
+    protected function stopIfNecessary(Consumer $config): void
+    {
+        if ($this->memoryManager->memoryExceeded($config->getMemoryLimit())) {
+            $this->stop(12);
+        }
+    }
+
+    /**
+     * Stop consuming and bail out of the script.
+     */
+    protected function stop(int $status = 0): void
+    {
+        exit($status);
     }
 }
